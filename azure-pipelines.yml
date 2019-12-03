@@ -1,4 +1,5 @@
 pool:
+
   vmImage: 'Ubuntu-16.04'
 
 variables:
@@ -14,8 +15,10 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
   inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
+    command: 'custom'
+    projects: '**/*.sln'
+    custom: 'restore'
+    arguments: '--force'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - $(buildConfiguration)'
